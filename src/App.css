@@ -1,0 +1,27 @@
+@import url('https://fonts.googleapis.com/css2?family=Anton&display=swap');
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+body{
+
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    overflow-x: hidden;
+    overflow-y: hidden;
+    background-color: #0a233e;
+    /* background: hsla(0, 2%, 24%, 1);
+    background: linear-gradient(135deg, hsla(0, 2%, 24%, 1) 0%, hsla(215, 19%, 78%, 1) 46%, hsla(0, 1%, 26%, 1) 100%);  
+    
+    background: -moz-linear-gradient(135deg, hsla(0, 2%, 24%, 1) 0%, hsla(215, 19%, 78%, 1) 46%, hsla(0, 1%, 26%, 1) 100%);
+    
+    background: -webkit-linear-gradient(135deg, hsla(0, 2%, 24%, 1) 0%, hsla(215, 19%, 78%, 1) 46%, hsla(0, 1%, 26%, 1) 100%);
+    
+    filter: progid: DXImageTransform.Microsoft.gradient( startColorstr="#3D3B3B", endColorstr="#BBC4D1", GradientType=1 ); */
+}
+
+.parallax-container{
+    background-color: transparent !important;
+}
