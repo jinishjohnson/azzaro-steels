@@ -35,16 +35,16 @@
     "@types/node": "^22.13.4",
     "@types/react": "^18.2.43",
     "@types/react-dom": "^18.2.17",
-    "@vitejs/plugin-react": "^4.3.4",
+    "@vitejs/plugin-react": "^4.0.0",
     "autoprefixer": "^10.4.20",
     "postcss": "^8.5.2",
     "postcss-import": "^16.1.0",
     "tailwindcss": "^3.4.17",
-    "vite": "^5.4.14"
+    "vite": "^4.3.9"
   },
   "scripts": {
     "dev": "vite",
-    "build": "vite build",
+    "build": "CI=false vite build",
     "preview": "vite preview"
   },
   "overrides": {
@@ -53,6 +53,7 @@
     }
   },
   "engines": {
-    "node": ">=16.0.0"
+    "node": ">=16.0.0",
+    "npm": ">=8.0.0"
   }
 }
