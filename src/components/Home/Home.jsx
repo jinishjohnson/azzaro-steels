@@ -7,6 +7,9 @@ import Doors from "./Doors";
 import Window from "./Window";
 import Why from "./Why";
 import What from "./What";
+import Test from "./Test";
+import Contactus from "./contact-us";
+import { motion } from "framer-motion";
 
 const Home = () => {
     useEffect(() => {
@@ -33,6 +36,7 @@ const Home = () => {
     return (
         <>
             {/* Section 1 */}
+          
             <div
                 data-aos="fade-up"
                 className="h-screen bg-[url('assets/banner.jpg')] bg-cover mx-2 md:mx-6 rounded-2xl shadow-2xl"
@@ -53,9 +57,17 @@ const Home = () => {
                                 <p className="text-white text-1xl max-md:text-xl mb-6 font-light tracking-wide antialiased">
                                     {banner.description}
                                 </p>
-                                <button className="bg-red-600 text-white font-light px-6 py-4 max-md:px-4 max-md:py-4 rounded-2xl hover:bg-blue-900 hover:scale-110 hover:shadow-lg hover:-translate-y-1 transform transition-all duration-500 ease-in-out shadow-md antialiased">
+                                <motion.button 
+                                    initial={{ opacity: 0, scale: 0 }}
+                                    animate={{ opacity: 1, scale: 1 }}
+                                    transition={{
+                                        duration: 0.4,
+                                        scale: { type: "spring", visualDuration: 0.4, bounce: 0.5 },
+                                    }}
+                                    className="bg-red-600 text-white font-light px-6 py-4 max-md:px-4 max-md:py-4 rounded-2xl hover:bg-blue-900 hover:scale-110 hover:shadow-lg hover:-translate-y-1 transform transition-all duration-500 ease-in-out shadow-md antialiased"
+                                >
                                     Read More
-                                </button>
+                                </motion.button>
                             </div>
                         </div>
                     </Parallax>
@@ -68,7 +80,9 @@ const Home = () => {
             <Window />
             <Why />
             <What/>
-          
+            <Test/>
+            <Contactus/>
+
         </>
     );
 };

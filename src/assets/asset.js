@@ -5,6 +5,9 @@ import bg from "./hero.jpg"
 import wind from "./window.png"
 import door from "./door.png"
 import dw from "./doorswind.png"
+import doorbg from "./door-banner.png"
+import sky from "./sky.png"
+
 
 
 export const assets ={
@@ -15,7 +18,9 @@ export const assets ={
     bg,
     wind,
     door,
-    dw
+    dw,
+    doorbg,
+    sky
 }
 
 export const banner = 
@@ -61,3 +66,187 @@ export const whyus = [
     },
 ]
 
+//About us
+export const abtcontent = [
+    {
+        title: "Our Belief",
+        description: "We believe in a world where creativity wins and every step shapes the future.",
+    },
+    
+]
+
+
+
+export const about = [
+    {
+        title: "Our Belief",
+        description: "We believe in a world where creativity wins and every step shapes the future.",
+    },
+    {
+        title: "Our Action",
+        description: "Every project is a chance to innovate and make an impact that lasts.",
+    },
+    {
+        title: "Our Goal",
+        description: "Building not just products, but moments that matter.",
+    },
+]
+
+export const stats = [
+    {
+        title: "2023",
+        description: "Founded",
+       },
+    {
+        title: "15",
+        description: "Team Members",
+    },
+    {
+        title: "10K+",
+        description: "Clients Served",
+    },
+    {
+        title: "Coffee",
+        description: "Our Obsession",
+    },
+]
+
+// Door product//
+
+export const doorproduct =[
+    {
+        title: "The Azzaro Steel Door",
+        description: "The Azzaro Steel Door is a modern and stylish door that is made from high quality steel.",
+        image: assets.door,
+        extraInfo: "The Azzaro Steel Door is a modern and stylish door that is made from high quality steel.",
+        features: [
+            "Material: High-grade stainless steel",
+            "Finish: Matte or Glossy options",
+            "Dimensions: Customizable up to 8ft x 4ft",
+            "Warranty: 10 years",
+        ],
+        price: "₹ 10,000",
+    },
+    {
+        title: "The Azzaro Steel Door",
+        description: "The Azzaro Steel Door is a modern and stylish door that is made from high quality steel.",
+        image: assets.door,
+        extraInfo: "The Azzaro Steel Door is a modern and stylish door that is made from high quality steel.",
+        features: [
+            "Material: High-grade stainless steel",
+            "Finish: Matte or Glossy options",
+            "Dimensions: Customizable up to 8ft x 4ft",
+            "Warranty: 10 years",
+        ],
+        price: "₹ 10,000",
+    },
+    {
+        title: "The Azzaro Steel Door",
+        description: "The Azzaro Steel Door is a modern and stylish door that is made from high quality steel.",
+        image: assets.door,
+        extraInfo: "The Azzaro Steel Door is a modern and stylish door that is made from high quality steel.",
+        features: [
+            "Material: High-grade stainless steel",
+            "Finish: Matte or Glossy options",
+            "Dimensions: Customizable up to 8ft x 4ft",
+            "Warranty: 10 years",
+        ],
+        price: "₹ 10,000",
+    },
+    {
+        title: "The Azzaro Steel Door",
+        description: "The Azzaro Steel Door is a modern and stylish door that is made from high quality steel.",
+        image: assets.door,
+        extraInfo: "The Azzaro Steel Door is a modern and stylish door that is made from high quality steel.",
+        features: [
+            "Material: High-grade stainless steel",
+            "Finish: Matte or Glossy options",
+            "Dimensions: Customizable up to 8ft x 4ft",
+            "Warranty: 10 years",
+        ],
+        price: "₹ 10,000",
+    },
+]
+
+// Window product//
+
+export const winosproduct = [
+    {
+        title: "The Azzaro Steel Door",
+        description: "The Azzaro Steel Door is a modern and stylish door that is made from high quality steel.",
+        image: assets.wind,
+        extraInfo: "The Azzaro Steel Door is a modern and stylish door that is made from high quality steel.",
+        features: [
+            "Material: High-grade stainless steel",
+            "Finish: Matte or Glossy options",
+            "Dimensions: Customizable up to 8ft x 4ft",
+            "Warranty: 10 years",
+        ],
+        price: "₹ 10,000",
+    },
+    {
+        title: "The Azzaro Steel Door",
+        description: "The Azzaro Steel Door is a modern and stylish door that is made from high quality steel.",
+        image: assets.wind,
+        extraInfo: "The Azzaro Steel Door is a modern and stylish door that is made from high quality steel.",
+        features: [
+            "Material: High-grade stainless steel",
+            "Finish: Matte or Glossy options",
+            "Dimensions: Customizable up to 8ft x 4ft",
+            "Warranty: 10 years",
+        ],
+        price: "₹ 10,000",
+    },  
+    {
+        title: "The Azzaro Steel Door",
+        description: "The Azzaro Steel Door is a modern and stylish door that is made from high quality steel.",
+        image: assets.wind,
+        extraInfo: "The Azzaro Steel Door is a modern and stylish door that is made from high quality steel.",
+        features: [
+            "Material: High-grade stainless steel",
+            "Finish: Matte or Glossy options",
+            "Dimensions: Customizable up to 8ft x 4ft",
+            "Warranty: 10 years",
+        ],
+        price: "₹ 10,000",
+    },   
+    {
+        title: "The Azzaro Steel Door",
+        description: "The Azzaro Steel Door is a modern and stylish door that is made from high quality steel.",
+        image: assets.wind,
+        extraInfo: "The Azzaro Steel Door is a modern and stylish door that is made from high quality steel.",
+        features: [
+            "Material: High-grade stainless steel",
+            "Finish: Matte or Glossy options",
+            "Dimensions: Customizable up to 8ft x 4ft",
+            "Warranty: 10 years",
+        ],
+        price: "₹ 10,000",
+    }   ,
+    {
+        title: "The Azzaro Steel Door",
+        description: "The Azzaro Steel Door is a modern and stylish door that is made from high quality steel.",
+        image: assets.wind,
+        extraInfo: "The Azzaro Steel Door is a modern and stylish door that is made from high quality steel.",
+        features: [
+            "Material: High-grade stainless steel",
+            "Finish: Matte or Glossy options",
+            "Dimensions: Customizable up to 8ft x 4ft",
+            "Warranty: 10 years",
+        ],
+        price: "₹ 10,000",
+    }   ,
+    {
+        title: "The Azzaro Steel Door",
+        description: "The Azzaro Steel Door is a modern and stylish door that is made from high quality steel.",
+        image: assets.wind,
+        extraInfo: "The Azzaro Steel Door is a modern and stylish door that is made from high quality steel.",
+        features: [
+            "Material: High-grade stainless steel",
+            "Finish: Matte or Glossy options",
+            "Dimensions: Customizable up to 8ft x 4ft",
+            "Warranty: 10 years",
+        ],
+        price: "₹ 10,000",
+    }
+]

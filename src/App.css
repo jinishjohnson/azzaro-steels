@@ -5,7 +5,6 @@
 @tailwind utilities;
 
 body{
-
     margin: 0;
     padding: 0;
     box-sizing: border-box;
@@ -24,4 +23,40 @@ body{
 
 .parallax-container{
     background-color: transparent !important;
+}
+
+html, body {
+  overflow-x: hidden;
+  position: relative;
+  width: 100%;
+  -webkit-overflow-scrolling: touch;
+  overscroll-behavior-y: none;
+  overflow-y: scroll;
+}
+
+body {
+  min-height: -webkit-fill-available;
+}
+
+/* Fix for iOS height issues */
+@supports (-webkit-touch-callout: none) {
+  .min-h-screen {
+    min-height: -webkit-fill-available;
+  }
+}
+
+/* Prevent horizontal scroll on mobile */
+.overflow-x-hidden {
+  overflow-x: hidden;
+}
+
+/* Hide scrollbar for Chrome, Safari and Opera */
+::-webkit-scrollbar {
+  display: none;
+}
+
+/* Hide scrollbar for IE, Edge and Firefox */
+* {
+  -ms-overflow-style: none;  /* IE and Edge */
+  scrollbar-width: none;  /* Firefox */
 }

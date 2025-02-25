@@ -1,12 +1,36 @@
-import React, { useState } from 'react'
-import { ParallaxBanner, Parallax } from 'react-scroll-parallax'
+import React, { useState, useEffect } from 'react'
+import { ParallaxBanner, Parallax, useParallax } from 'react-scroll-parallax'
 import Card from './Card'
 import HorizontalScroll from '../ui-components/horizontal/HorizontalScroll'
+import gsap from 'gsap'
+
 const Why = () => {
   const [showTooltip, setShowTooltip] = useState(false);
+  const [isLoaded, setIsLoaded] = useState(false);
+
+  useEffect(() => {
+    const timeline = gsap.timeline();
+    setIsLoaded(true);
+    
+    timeline.fromTo(".why-section", 
+      { opacity: 0 },
+      { 
+        opacity: 1, 
+        duration: 0.8,
+        ease: "power2.inOut"
+      }
+    );
+
+    return () => {
+      setIsLoaded(false);
+      timeline.kill();
+    };
+  }, []);
+
+  if (!isLoaded) return null;
 
   return (
-    <>
+    <div className="why-section relative">
       <ParallaxBanner
         layers={[
           { image: './assets/banner.jpg', speed: -20 },
@@ -24,7 +48,7 @@ const Why = () => {
         className="aspect-[2/1]"    
       />
       <HorizontalScroll />
-    </>
+    </div>
   )
 }
 
