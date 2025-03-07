@@ -26,7 +26,7 @@ export const assets ={
 export const banner = 
     
         {
-            subtitle: "Summit Steel Works",
+            subtitle: "Azzaro Steel",
             description: "From the smallest detail to the largest project, Summit Steel Works has the space for the largest steel fabrication requirement. If you can imagine it, we can build it.",
         }
         
@@ -61,6 +61,14 @@ export const whyus = [
         description: "Our team of experts has a deep understanding of the steel industry and the latest technologies.",
     },
     {
+        title: "Expertise",
+        description: "Our team of experts has a deep understanding of the steel industry and the latest technologies.",
+    },
+    {
+        title: "Expertise",
+        description: "Our team of experts has a deep understanding of the steel industry and the latest technologies.",
+    },
+    {
         title: "EXIT",
         description: "EXPLORE OUR PRODUCTS",
     },
@@ -74,6 +82,7 @@ export const abtcontent = [
     },
     
 ]
+
 
 
 

@@ -25,9 +25,11 @@
     "react-dom": "^18.2.0",
     "react-icons": "^5.4.0",
     "react-parallax": "^3.5.1",
+    "react-responsive": "^10.0.1",
     "react-router-dom": "^7.1.5",
     "react-scroll-parallax": "^3.4.5",
     "scrolltrigger": "^1.0.1",
+    "styled-components": "^6.1.15",
     "tailwind-merge": "^3.0.1"
   },
   "devDependencies": {
@@ -44,7 +46,7 @@
   },
   "scripts": {
     "dev": "vite",
-    "build": "CI=false vite build",
+    "build": "cross-env CI=false vite build",
     "preview": "vite preview"
   },
   "overrides": {

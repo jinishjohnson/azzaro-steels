@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from 'react'
 import { ParallaxProvider, Parallax} from 'react-scroll-parallax'
 import { assets, doors } from '../../assets/asset'
+import Button from '../ui-components/Button'
 
 const Doors = () => {
   const [isScrolled, setIsScrolled] = useState(false)
@@ -28,69 +29,47 @@ const Doors = () => {
           min-h-screen
           mt-4 
           rounded-3xl 
-          flex items-center justify-between 
-           bg-[url('./assets/banner2.jpg')] 
-          bg-no-repeat bg-cover
+          flex items-center 
+          bg-[url('./assets/banner.webp')] 
+          bg-no-repeat bg-cover bg-center
           transition-all duration-700 ease-in-out
-          ${isScrolled ? 'scale-100' : 'scale-95 sm:scale-90 md:scale-75'}
+          ${isScrolled ? 'scale-100' : 'scale-95'}
           p-4 sm:p-6 md:p-8
         `}
       >
-        <div className='flex w-full flex-col-reverse md:flex-row gap-8 md:gap-12'>
-          <Parallax translateY={[20, 20]} speed={-5} className="w-full md:w-1/2">
-            <div className='w-full h-full flex flex-col space-y-4 md:space-y-6'>
-              <Parallax translateX={[-10, 20]} speed={-5} className="w-full">
-                <h1 className='text-white uppercase text-center md:text-start font-anton text-3xl sm:text-4xl md:text-5xl lg:text-6xl tracking-wider font-bold'>
+        <div className='w-full max-w-7xl mx-auto flex flex-col-reverse md:flex-row gap-8 md:gap-12'>
+          {/* Content Section */}
+          <div className="w-full md:w-1/2">
+            <div className='w-full h-full flex flex-col space-y-4 md:space-y-6 md:justify-center'>
+              <div className="w-full">
+                <h1 className='text-black uppercase text-start font-anton text-4xl sm:text-5xl md:text-6xl lg:text-7xl tracking-wider font-bold'>
                   Steel <span className='text-red-600'>Doors</span>
                 </h1>
-                <p className='text-white text-start text-sm sm:text-base md:text-lg font-semibold mt-4 max-w-prose'>
+                <p className='text-black text-start text-base sm:text-lg md:text-xl font-semibold mt-4 max-w-prose'>
                   {doors.subtitle}
                 </p>
-                <p className='text-white max-w-prose  font-extralight text-xs sm:text-sm md:text-base mt-2 text-justify'>
+                <p className='text-black/80 max-w-prose font-normal text-sm sm:text-base md:text-lg mt-3 text-start leading-relaxed'>
                   {doors.description}
                 </p>
-                <div className="flex justify-center md:justify-start mt-6">
-                  <button className='
-                    bg-red-600 
-                    text-white 
-                    font-light 
-                    px-3 sm:px-4 md:px-6
-                    py-2 sm:py-3 md:py-4
-                    text-xs sm:text-sm md:text-base
-                    rounded-2xl 
-                    hover:bg-blue-900 
-                    hover:scale-110 
-                    hover:shadow-lg 
-                    hover:-translate-y-1 
-                    transform 
-                    transition-all 
-                    duration-500 
-                    ease-in-out 
-                    shadow-md 
-                    antialiased
-                  '>
-                    View Products
-                  </button>
-                </div>
-              </Parallax>
+                <div className="flex justify-start mt-8">
+                  <Button title="Shop Now"/>
+                 </div>
+              </div>
             </div>
-          </Parallax>
+          </div>
 
-          <Parallax translateY={[20, -20]} speed={-5} className="w-full md:w-1/2">
-            <div className="w-full flex items-center justify-center">
-              <img 
-                src={assets.door} 
-                alt="Doors and Windows" 
-                className="
-                  object-contain 
-                  rounded-2xl 
-                  shadow-2xl 
-                  w-[90%] sm:w-[85%] md:w-[80%]
-                  h-[200px] sm:h-[250px] md:h-[300px] lg:h-[400px]
-                  transition-all duration-300
-                " 
-              />
-            </div>
+          {/* Image Section */}
+          <Parallax translateY={[20, -20]} speed={-5} className="w-full md:w-1/2 flex items-center justify-center">
+            <img 
+              src={assets.door} 
+              alt="Azzaro Steel Doors" 
+              className="
+                object-contain 
+                w-full max-w-md
+                h-[250px] sm:h-[300px] md:h-[400px]
+                transition-all duration-300
+              " 
+            />
           </Parallax>
         </div>
       </div>

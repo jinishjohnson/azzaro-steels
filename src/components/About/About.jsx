@@ -3,7 +3,8 @@ import { Parallax } from "react-parallax";
 import Lottie from "lottie-react";
 import Team from "../../assets/About.json";
 import Emoji from "../../assets/impresions.json";
-import { about, stats } from "../../assets/asset";
+import { about, assets, stats } from "../../assets/asset";
+import Card from '../ui-components/card'
 
 const About = () => {
   return (
@@ -22,8 +23,8 @@ const About = () => {
 
       {/* Parallax Hero Section */}
       <Parallax
-        bgImage="https://images.unsplash.com/photo-1600585154340-be6161a56a0c?ixlib=rb-4.0.3&auto=format&fit=crop&w=1950&q=80"
-        strength={200} // Reduced for better mobile performance
+        bgImage={assets.Abtus}
+        strength={100}
         className="h-[60vh] sm:h-screen mx-4 sm:mx-6 flex items-center justify-center rounded-2xl mt-2"
       >
         <div className="text-center text-white p-6 sm:p-8 rounded-2xl">
@@ -39,10 +40,7 @@ const About = () => {
       {/* Main Content */}
       <section className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12 sm:py-16 bg-transparent">
         {/* Who We Are with Parallax */}
-        <Parallax
-          strength={150} // Subtle effect for mobile
-          className="py-12 sm:py-20 rounded-2xl"
-        >
+        <Parallax strength={150} className="py-12 sm:py-20 rounded-2xl">
           <div className="grid grid-cols-1 md:grid-cols-2 gap-8 sm:gap-12 items-center max-w-7xl mx-auto px-4">
             <div>
               <h2 className="text-4xl sm:text-5xl md:text-7xl font-thin text-white font-anton tracking-wide">
@@ -58,42 +56,27 @@ const About = () => {
           </div>
         </Parallax>
 
-        {/* Our Vibe */}
-        <Parallax
-          strength={150}
-          className="py-12 sm:py-20 rounded-2xl"
-        >
-          <div className="mt-8 sm:mt-16">
-            <h2 className="text-3xl sm:text-4xl md:text-5xl font-anton tracking-wide font-bold text-white">
-              Our Culture
-            </h2>
-            <p className="mt-4 text-sm sm:text-base md:text-lg text-white/70 max-w-3xl">
-              Clean lines, big dreams, and a no-nonsense approach. We're a team of creators and doers obsessed with pushing boundaries and keeping it real.
-            </p>
-          </div>
-        </Parallax>
 
-        {/* Why We Do It */}
-        <div className="mt-8 sm:mt-16 grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-6 sm:gap-8">
-          {about.map((item, index) => (
-            <div
-              key={index}
-              className="bg-transparent border-2 border-white/20 hover:scale-105 hover:border-white/80 hover:shadow-xl rounded-2xl transition-all duration-500 group relative overflow-hidden min-h-[200px] sm:min-h-[240px] flex items-center justify-center"
-            >
-              <div className="relative z-10 text-center px-4 py-6 w-full">
-                <h3 className="text-lg sm:text-xl font-bold text-white">{item.title}</h3>
-                <p className="mt-2 text-sm sm:text-base text-white/70">{item.description}</p>
-              </div>
-            </div>
-          ))}
+
+        {/* Our Culture */}
+        <div className="mt-8 sm:mt-16">
+          <h2 className="text-3xl sm:text-4xl md:text-5xl font-anton tracking-wide font-bold text-white">
+            Our Culture
+          </h2>
+          <p className="mt-4 text-sm sm:text-base md:text-lg text-white/70 max-w-3xl">
+            Clean lines, big dreams, and a no-nonsense approach. We're a team of creators and doers obsessed with pushing boundaries and keeping it real.
+          </p>
         </div>
-
-        {/* Stats */}
+        {/* Why We Do It */}
+        <div className="mt-8 sm:mt-16 grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-6 sm:gap-8 mx-auto">
+          {/* {about.map((item,index)=>{ */}
+            <Card  title="hii" description="huhuuh"/>
+          {/* })
+          } */}
+        </div>
+        {/* // Our Stats */}
         <div className="mt-8 sm:mt-16 text-center">
-          <Parallax
-            strength={150}
-            className="py-12  sm:py-20 rounded-2xl bg-black/20"
-          >
+          <Parallax strength={150} className="py-12 sm:py-20 rounded-2xl bg-black/20">
             <h2 className="text-4xl sm:text-5xl md:text-6xl flex justify-center items-center mt-8 sm:mt-12 mb-8 sm:mb-12 font-anton tracking-wide font-bold text-red-600">
               Impresions
               <Lottie

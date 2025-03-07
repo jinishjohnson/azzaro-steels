@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from 'react'
 import { ParallaxProvider, Parallax } from 'react-scroll-parallax'
 import { assets, aboutus } from '../../assets/asset'
+import Button from "../../components/ui-components/Button"
 
 
 const about = () => {
@@ -49,10 +50,8 @@ const about = () => {
                 <p className='text-white w-96   md:text-start font-extralight text-sm md:text-1xl  px-4 md:px-0 text-justify'>
                   {aboutus.description}
                 </p>
-                <div className="flex justify-center md:justify-start">
-                  <button className='bg-red-600 text-white font-light px-4 py-3 mt-6 rounded-2xl hover:bg-blue-900 hover:scale-110 hover:shadow-lg hover:-translate-y-1 transform transition-all duration-500 ease-in-out shadow-md antialiased text-sm md:text-base'>
-                    Read More <span className='text-white'>About Us</span>
-                  </button>
+                <div className="flex justify-center md:justify-start mt-2">
+                  <Button title="explore" />
                 </div>
               </Parallax>
             </div>

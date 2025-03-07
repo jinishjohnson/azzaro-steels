@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react'
 import { ParallaxProvider, Parallax } from 'react-scroll-parallax'
 import { assets, windows } from '../../assets/asset'
+import Button from '../ui-components/Button'
 
 const Window = () => {
     const [isScrolled, setIsScrolled] = useState(false)
@@ -24,19 +25,20 @@ const Window = () => {
             <div 
                 id="window-section"
                 className={`
-                    mx-2 sm:mx-4 md:mx-4 lg:mx-6 xl:mx-6
+                    mx-2 sm:mx-4 md:mx-6
                     min-h-screen
                     mt-4 
                     rounded-3xl 
-                    flex items-center justify-between 
-                    bg-[url('./assets/banner2.jpg')] 
+                    flex items-center 
+                    bg-[url('./assets/banner2.webp')] 
                     bg-no-repeat bg-cover bg-center
                     transition-all duration-700 ease-in-out
-                    ${isScrolled ? 'scale-100' : 'scale-[0.85] xs:scale-90 sm:scale-95 md:scale-95'}
-                    p-3 xs:p-4 sm:p-6 md:p-8 lg:p-10
+                    ${isScrolled ? 'scale-100' : 'scale-95'}
+                    p-4 sm:p-6 md:p-8
                 `}
             >
-                <div className='flex w-full flex-col md:flex-row gap-4 xs:gap-6 sm:gap-8 md:gap-12 lg:gap-16'>
+                <div className='w-full max-w-7xl mx-auto flex flex-col md:flex-row gap-8 md:gap-12'>
+                    {/* Image Section with Parallax */}
                     <Parallax translateY={[20, -20]} speed={-5} className="w-full md:w-1/2">
                         <div className="w-full flex items-center justify-center">
                             <img 
@@ -44,36 +46,57 @@ const Window = () => {
                                 alt="Steel Windows" 
                                 className="
                                     object-contain 
-                                    rounded-2xl 
-                                    shadow-2xl 
-                                    w-[95%] xs:w-[90%] sm:w-[85%] md:w-[80%] lg:w-[75%]
-                                    h-[180px] xs:h-[200px] sm:h-[250px] md:h-[300px] lg:h-[400px] xl:h-[500px]
+                                    w-full max-w-md
+                                    h-[250px] sm:h-[300px] md:h-[400px]
                                     transition-all duration-300
                                 " 
                             />
                         </div>
                     </Parallax>
 
-                    <Parallax translateY={[20, 20]} speed={-5} className="w-full md:w-1/2">
-                        <div className='w-full h-full flex flex-col space-y-2 xs:space-y-3 sm:space-y-4 md:space-y-6 lg:space-y-8'>
-                            <Parallax translateX={[-10, 20]} speed={-5} className="w-full">
-                                <h1 className='text-white uppercase text-center md:text-start font-anton text-4xl md:text-6xl tracking-wider font-bold mb-4 md:mb-8'>
+                    {/* Content Section without Parallax */}
+                    <div className="w-full md:w-1/2">
+                        <div className='w-full h-full flex flex-col space-y-4 md:space-y-6 md:justify-center'>
+                            <div className="w-full">
+                                <h1 className='text-black uppercase text-start font-anton text-4xl sm:text-5xl md:text-6xl lg:text-7xl tracking-wider font-bold'>
                                     Steel <span className='text-red-600'>Windows</span>
                                 </h1>
-                                <p className='text-white text-start text-1xl font-semibold w-96'>
+                                <p className='text-black text-start text-base sm:text-lg md:text-xl font-semibold mt-4 max-w-prose'>
                                     {windows.subtitle}
                                 </p>
-                                <p className='text-white w-96   md:text-start font-extralight text-sm md:text-1xl  px-4 md:px-0 text-justify'>
+                                <p className='text-black/80 max-w-prose font-normal text-sm sm:text-base md:text-lg mt-3 text-start leading-relaxed'>
                                     {windows.description}
                                 </p>
-                                <div className="flex justify-center md:justify-start mt-4 xs:mt-5 sm:mt-6 md:mt-8">
-                                    <button className='bg-red-600 text-white font-light px-4 py-3 mt-6 rounded-2xl hover:bg-blue-900 hover:scale-110 hover:shadow-lg hover:-translate-y-1 transform transition-all duration-500 ease-in-out shadow-md antialiased text-sm md:text-base'>
+                                <div className="flex justify-start mt-8">
+                                    {/* <button className='
+                                        group
+                                        bg-red-600 
+                                        text-white 
+                                        font-medium
+                                        px-6 sm:px-8
+                                        py-3 sm:py-4
+                                        text-sm sm:text-base
+                                        rounded-xl
+                                        hover:bg-blue-900 
+                                        transform 
+                                        transition-all 
+                                        duration-300 
+                                        ease-in-out 
+                                        hover:scale-105
+                                        active:scale-95
+                                        shadow-md 
+                                        flex items-center gap-2
+                                    '>
                                         View Products
-                                    </button>
+                                        <svg xmlns="http://www.w3.org/2000/svg" className="h-5 w-5 group-hover:translate-x-1 transition-transform" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                            <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
+                                        </svg>
+                                    </button> */}
+                                    <Button title="Shop Now"/>
                                 </div>
-                            </Parallax>
+                            </div>
                         </div>
-                    </Parallax>
+                    </div>
                 </div>
             </div>
         </ParallaxProvider>

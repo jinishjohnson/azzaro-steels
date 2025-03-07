@@ -11,10 +11,10 @@ const What = () => {
             speed: -15,
             children: (
               <div className="absolute inset-0 flex items-center justify-center"> 
-                <h1 className="text-8xl text-white font-thin font-anton">
+                <h1 className="text-8xl max-sm:text-6xl mx-sm:bold text-white font-thin font-anton">
                   Our <span className='text-red-600'>Services</span>
                 </h1>
-                <p className="text-2xl text-white font-thin font-anton mt-4">
+                <p className="text-2xl max-sm:text-xl text-white font-thin font-anton mt-4">
                   Scroll to explore what we offer
                 </p>  
               </div>
@@ -23,7 +23,7 @@ const What = () => {
         ]}
         className="h-screen"
       />  
-      <div className="relative h-[600vh]"> {/* Six times height for 6 pages */}
+      <div className="relative h-[500vh]"> {/* Six times height for 6 pages */}
         {/* Page A */}
         <div className="sticky top-0 h-screen overflow-hidden">
           <Parallax

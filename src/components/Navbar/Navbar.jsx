@@ -1,15 +1,51 @@
 "use client";
 import { MdPhoneAndroid } from "react-icons/md";
 import { GoBook } from "react-icons/go";
-import { useState, useEffect } from "react";
+import { useState } from "react";
 import { Menu, X } from "lucide-react";
 import { assets } from "../../assets/asset";
 import { Link } from "react-router-dom";
 import { motion, AnimatePresence } from "framer-motion";
+import Button from "../ui-components/Buttonb";
 
 export default function Navbar() {
+  // PDF handling
+  const pdfUrl = assets.Pdf;
+
   // form initial
   const [result, setResult] = useState("");
+  const [isVibrating, setIsVibrating] = useState(false);
+  const [pressTimer, setPressTimer] = useState(null);
+
+  const handlePressStart = () => {
+    setPressTimer(
+      setTimeout(() => {
+        try {
+          if ('vibrate' in navigator && navigator.vibrate) {
+            // Try vibrating multiple times in a pattern for better feedback
+            navigator.vibrate([100, 50, 100]); 
+          }
+          setIsVibrating(true);
+        } catch (err) {
+          console.log("Vibration not supported");
+        }
+      }, 500) // Reduced from 2000ms to 500ms for faster feedback
+    );
+  };
+
+  const handlePressEnd = () => {
+    if (pressTimer) {
+      clearTimeout(pressTimer);
+    }
+    setIsVibrating(false);
+    try {
+      if ('vibrate' in navigator && navigator.vibrate) {
+        navigator.vibrate(0);
+      }
+    } catch (err) {
+      console.log("Vibration not supported");
+    }
+  };
 
   const onSubmit = async (event) => {
     event.preventDefault();
@@ -43,6 +79,7 @@ export default function Navbar() {
     { id: "03", name: "Resources", href: "/resources" },
     { id: "04", name: "Products", href: "/products" },
     { id: "05", name: "Contact Us", href: "/contact", highlight: true },
+    { id: "06", name: "Catalogue", href: "#", isCatalogue: true },
   ];
 
   return (
@@ -57,17 +94,19 @@ export default function Navbar() {
         initial={{ opacity: 0 }}
         animate={{ opacity: 1 }}
         transition={{ delay: 0.2 }}
-        className="relative z-50 flex flex-col sm:flex-row justify-between items-center p-1 sm:p-2 gap-2 sm:gap-4"
+        className="relative z-50 flex flex-col sm:flex-row justify-between items-center p-1 sm:p-2 gap-2 sm:gap-2"
       >
         {/* Left Column (Logo + Menu Button) */}
         <motion.div 
           whileHover={{ scale: 1.02 }}
+          whileTap={{ scale: 0.98 }}
           transition={{ type: "spring", stiffness: 400, damping: 10 }}
-          className="relative flex justify-between items-center gap-2 sm:gap-10 bg-slate-400 w-full sm:w-2/5 rounded-2xl h-auto px-3 sm:px-7 py-2 sm:py-5 shadow-lg"
+          className="relative flex justify-between items-center gap-2 sm:gap-10 bg-slate-400 w-full sm:w-2/5 rounded-2xl h-auto px-3 max-sm:px-6 py-4 max-sm:py-5 shadow-lg"
         >
           <Link to="/">
             <motion.img 
               whileHover={{ scale: 1.1 }}
+              whileTap={{ scale: 0.95 }}
               src={assets.logo} 
               alt="logo" 
               className="w-auto h-5 sm:h-8 cursor-pointer" 
@@ -76,7 +115,14 @@ export default function Navbar() {
           <motion.button 
             whileHover={{ scale: 1.1 }}
             whileTap={{ scale: 0.95 }}
-            onClick={() => setMenuOpen(!menuOpen)} 
+            animate={{ scale: isVibrating ? [1, 1.1, 1] : 1 }}
+            transition={{ repeat: isVibrating ? Infinity : 0, duration: 0.2 }}
+            onClick={() => setMenuOpen(!menuOpen)}
+            onTouchStart={handlePressStart}
+            onTouchEnd={handlePressEnd}
+            onMouseDown={handlePressStart}
+            onMouseUp={handlePressEnd}
+            onMouseLeave={handlePressEnd}
             className="text-white flex items-center gap-1 sm:gap-2"
           >
             {menuOpen ? <X size={20} className="sm:w-7 sm:h-7" /> : <Menu size={20} className="sm:w-7 sm:h-7" />}
@@ -89,22 +135,24 @@ export default function Navbar() {
           initial={{ opacity: 0, x: 20 }}
           animate={{ opacity: 1, x: 0 }}
           transition={{ delay: 0.4 }}
-          className="flex gap-2 sm:gap-4 w-full sm:w-auto justify-start"
+          className="hidden sm:flex gap-2 sm:gap-4 w-full sm:w-auto justify-start"
         >
           <motion.button
             whileHover={{ scale: 1.05 }}
             whileTap={{ scale: 0.95 }}
             onClick={() => setShowContactForm(true)}
-            className="px-3 sm:px-6 py-1.5 sm:py-4 text-xs sm:text-xl font-anton bg-red-600 text-white rounded-full xl:rounded-2xl shadow-xl hover:bg-red-500 transition flex items-center gap-1 sm:gap-2"
+            className=""
           >
-            <MdPhoneAndroid className="text-base sm:text-xl" /> Contact Us
+          <Button title="Contact Us" />
+
           </motion.button>
           <motion.button 
             whileHover={{ scale: 1.05 }}
             whileTap={{ scale: 0.95 }}
-            className="px-3 sm:px-6 py-1.5 sm:py-4 text-xs sm:text-xl border border-red-600 hover:border-white hover:bg-transparent font-anton bg-transparent text-white rounded-full xl:rounded-2xl shadow-xl hover:bg-red-500 transition flex items-center gap-1 sm:gap-2"
+            onClick={() => window.open(pdfUrl, '_blank')}
+            className="px-3 sm:px-6 py-1 sm:py-4 text-xs sm:text-xl border border-red-600 hover:border-white hover:bg-transparent font-anton bg-transparent text-white rounded-3xl xl:rounded-2xl shadow-xl hover:bg-red-500 transition flex items-center gap-1 sm:gap-2"
           >
-            <GoBook className="text-3xl sm:text-xl" /> Catalogue
+            <GoBook className="text-3xl sm:text-xl "/> Catalogue
           </motion.button>
         </motion.div>
       </motion.div>
@@ -124,20 +172,24 @@ export default function Navbar() {
             animate={{ y: 0, opacity: 1 }}
             exit={{ y: -20, opacity: 0 }}
             transition={{ type: "spring", stiffness: 300, damping: 25 }}
-            className="absolute top-16 sm:top-24 left-1 sm:left-5 w-[97%] sm:w-2/5 bg-slate-400 p-2 rounded-2xl shadow-xl border border-white/20"
+            className="absolute top-26 max-sm:top-18 left-2 max-sm:left-2 w-[97%] sm:w-2/5 bg-slate-400 p-2 rounded-2xl shadow-xl border border-white/20"
           >
-            <div className="grid grid-cols-2 gap-2 sm:gap-4">
+            <div className="grid grid-cols-2 gap-4 max-sm:gap-4">
               {menuItems.map((item) => (
                 <Link key={item.id} to={item.href}>
                   <motion.div
-                    whileHover={{ scale: 1.05 }}
+                    whileHover={{ scale: 1.05, backgroundColor: item.highlight ? "#ef4444" : "#1f2937" }}
                     whileTap={{ scale: 0.95 }}
                     className={`p-2 sm:p-4 rounded-xl text-white cursor-pointer shadow-md flex flex-col justify-between 
                       ${item.highlight ? "bg-red-600 text-black font-bold" : "bg-gray-800"} 
-                      transition-transform duration-300`}
+                      transition-all duration-300`}
+                    onClick={() => item.isCatalogue && window.open(pdfUrl, '_blank')}
                   >
                     <span className="text-[10px] sm:text-xs text-white">{item.id}</span>
-                    <span className="text-sm sm:text-lg">{item.name}</span>
+                    <span className="text-sm sm:text-lg flex items-center gap-1">
+                      {item.isCatalogue && <GoBook />}
+                      {item.name}
+                    </span>
                   </motion.div>
                 </Link>
               ))}
@@ -176,7 +228,7 @@ export default function Navbar() {
                 </motion.button>
               </div>
               <form className="space-y-4" onSubmit={onSubmit}>
-                <motion.div whileHover={{ scale: 1.02 }}>
+                <motion.div whileHover={{ scale: 1.02 }} whileTap={{ scale: 0.98 }}>
                   <input
                     type="text"
                     name="name"
@@ -184,7 +236,7 @@ export default function Navbar() {
                     className="w-full p-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-red-600"
                   />
                 </motion.div>
-                <motion.div whileHover={{ scale: 1.02 }}>
+                <motion.div whileHover={{ scale: 1.02 }} whileTap={{ scale: 0.98 }}>
                   <input
                     type="email"
                     name="email"
@@ -192,7 +244,7 @@ export default function Navbar() {
                     className="w-full p-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-red-600"
                   />
                 </motion.div>
-                <motion.div whileHover={{ scale: 1.02 }}>
+                <motion.div whileHover={{ scale: 1.02 }} whileTap={{ scale: 0.98 }}>
                   <textarea
                     name="message"
                     placeholder="Your Message"

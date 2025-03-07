@@ -17,6 +17,7 @@ import preload from "./assets/preload.svg";
 import ScrollProgress from "./components/ScrollProgress";
 import Door from "./components/Product/Door";
 import Winos from "./components/Product/Winos";
+import Error from "./components/404page/Err"
 
 const App = () => {
   const location = useLocation();
@@ -142,6 +143,7 @@ const App = () => {
           <Route path="/contact" element={<Contactus />} />
           <Route path="/door" element={<Door />} />
           <Route path="/window" element={<Winos />} />
+          <Route path="/*" element={<Error/>}/>
         </Routes>
         <Footer />
       </ParallaxProvider>

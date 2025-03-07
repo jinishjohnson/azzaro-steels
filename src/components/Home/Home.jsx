@@ -1,7 +1,7 @@
 import { ParallaxProvider, Parallax } from "react-scroll-parallax";
 import { useEffect } from "react";
 import Lenis from "@studio-freight/lenis";
-import { banner } from "../../assets/asset";
+import { assets, banner } from "../../assets/asset";
 import About from "./about";
 import Doors from "./Doors";
 import Window from "./Window";
@@ -10,6 +10,8 @@ import What from "./What";
 import Test from "./Test";
 import Contactus from "./contact-us";
 import { motion } from "framer-motion";
+import Button from "../ui-components/Button";
+
 
 const Home = () => {
     useEffect(() => {
@@ -39,7 +41,7 @@ const Home = () => {
           
             <div
                 data-aos="fade-up"
-                className="h-screen bg-[url('assets/banner.jpg')] bg-cover mx-2 md:mx-6 rounded-2xl shadow-2xl"
+                className="h-screen bg-[url('assets/mainbanner.webp')] bg-cover mx-2 md:mx-6 rounded-2xl shadow-2xl"
             >
                 <ParallaxProvider>
                     <Parallax
@@ -51,9 +53,8 @@ const Home = () => {
                                 <h1 className="text-white text-1xl max-md:text-1xl mb-2 font-light tracking-wide antialiased">
                                     {banner.subtitle}
                                 </h1>
-                                <p className="text-white font-anton text-8xl font-black max-md:text-4xl mb-4 tracking-widest uppercase antialiased">
-                                    <span className="text-red-600">Steel</span> fabrication at its best
-                                </p>
+                                <p className="text-white flex flex-col font-anton text-8xl font-black max-md:text-4xl mb-4 tracking-widest uppercase antialiased">
+                                    <span className="text-red-600">MEET</span>THE EXPERTS OF PERFECTING</p>
                                 <p className="text-white text-1xl max-md:text-xl mb-6 font-light tracking-wide antialiased">
                                     {banner.description}
                                 </p>
@@ -64,9 +65,8 @@ const Home = () => {
                                         duration: 0.4,
                                         scale: { type: "spring", visualDuration: 0.4, bounce: 0.5 },
                                     }}
-                                    className="bg-red-600 text-white font-light px-6 py-4 max-md:px-4 max-md:py-4 rounded-2xl hover:bg-blue-900 hover:scale-110 hover:shadow-lg hover:-translate-y-1 transform transition-all duration-500 ease-in-out shadow-md antialiased"
                                 >
-                                    Read More
+                                <Button title="Explore"/>
                                 </motion.button>
                             </div>
                         </div>
@@ -82,6 +82,7 @@ const Home = () => {
             <What/>
             <Test/>
             <Contactus/>
+      
 
         </>
     );

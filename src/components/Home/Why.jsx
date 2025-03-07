@@ -30,16 +30,18 @@ const Why = () => {
   if (!isLoaded) return null;
 
   return (
-    <div className="why-section relative">
+    <div className="why-section relative overflow-hidden">
       <ParallaxBanner
         layers={[
           { image: './assets/banner.jpg', speed: -20 },
           {
             speed: -15,
-            children: (
-              <div className="absolute inset-0 flex items-center justify-center">
-                <h1 className="text-8xl text-white font-thin font-anton">Why Choose <span className='text-red-600'>US</span></h1>
-                <p className='text-white font-thin font-anton'>Team of Experts</p>
+            children: ( 
+              <div className="absolute inset-0 flex flex-col items-center justify-center gap-4">
+                <h1 className="text-8xl text-white max-sm:text-6xl font-thin font-anton">
+                  Why Choose <span className='text-red-600'>US</span>
+                </h1>
+                <p className='text-white font-thin font-anton text-2xl'>Team of Experts</p>
               </div>
             ),
           },
@@ -47,9 +49,10 @@ const Why = () => {
         ]}
         className="aspect-[2/1]"    
       />
-      <HorizontalScroll />
+      <div className="overflow-x-hidden">
+        <HorizontalScroll /> 
+      </div>
     </div>
-  )
-}
-
+  );
+};
 export default Why

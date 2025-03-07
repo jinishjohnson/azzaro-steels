@@ -3,6 +3,8 @@ import { ParallaxBanner, Parallax } from 'react-scroll-parallax'
 import { banner } from '../../assets/asset'
 import Lottie from 'lottie-react'
 import contact from '../../assets/contactus.json'
+import Loadon from "../../assets/Loadon.json";
+import done from "../../assets/done.json";
 
 const Contactus = () => {
   // form initial
@@ -10,7 +12,7 @@ const Contactus = () => {
 
   const onSubmit = async (event) => {
     event.preventDefault();
-    setResult("Sending....");
+    setResult(<Lottie animationData={Loadon} loop={true} className='w-20'/>);
     const formData = new FormData(event.target);
 
     formData.append("access_key", "cb46bc35-79a6-4f14-bd36-963a96972927");
@@ -23,7 +25,7 @@ const Contactus = () => {
     const data = await response.json();
 
     if (data.success) {
-      setResult("Form Submitted Successfully");
+      setResult(<Lottie animationData={done} loop={false} className='w-20'/>);
       event.target.reset();
     } else {
       console.log("Error", data);
@@ -93,10 +95,13 @@ const Contactus = () => {
                 rows="4"
                 className='w-full p-3 sm:p-4 rounded-3xl bg-white/5 text-red-600 shadow-inner font-anton inset-0 outline-none placeholder:text-white/50 focus:ring-2 focus:ring-red-600 transition-all resize-none' 
               />
+              <div className='flex flex-col sm:flex-row items-center gap-4'>
+
               <button className='w-full sm:w-1/3 md:w-1/4 p-2 sm:p-3 rounded-3xl bg-red-600 hover:bg-red-700 backdrop-blur-md shadow-2xl text-white font-anton transition-all duration-300 hover:scale-105'>
                 Submit
               </button>
               <p>{result}</p>
+              </div>
             </form>
           </div>
         </Parallax>
