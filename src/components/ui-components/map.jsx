@@ -3,7 +3,7 @@ import styled from 'styled-components';
 import Icon from '../../assets/azzaro-iconcard.svg'
 import office from '../../assets/showroom.png'
 
-const Card = () => {
+const Card = (props) => {
   return (
     <StyledWrapper>
       <div className="card_map">
@@ -16,10 +16,10 @@ const Card = () => {
                 </g>
               </svg>
               5/5</span>
-            <span className="Descripion">This is Descripion of The Game</span>
+            <span className="Descripion">{props.description}</span>
           </div>
           <img src={Icon} alt="" className='GameIcon' />
-          <span className="Name">Kottarakara</span>
+          <span className="Name">{props.title}</span>
         </div>
       </div>
     </StyledWrapper>

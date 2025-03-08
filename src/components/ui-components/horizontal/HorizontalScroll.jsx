@@ -63,9 +63,9 @@ const HorizontalScroll = () => {
         {whyus.map((item, index) => (
           <div
             key={index}
-            className={`card w-screen h-auto flex flex-col md:flex-row gap-4 md:gap-2 items-center justify-center text-white text-4xl font-bold p-4 md:p-6 transition-colors duration-300 ${
+            className={`card w-screen h-auto mx-2 my-3 rounded-3xl flex flex-col md:flex-row gap-4 md:gap-4 items-center justify-center text-white text-4xl font-bold p-4 md:p-6 transition-colors duration-300 ${
               index === whyus.length - 1
-                ? "bg-gradient-to-r from-red-600/30 to-orange-500/30 border border-red-300/30 pr-0"
+                ? "bg-gradient-to-r from-red-600/30 to-orange-500/30 border border-red-300/30 "
                 : "bg-gradient-to-r from-blue-500/30 to-indigo-500/30 border border-blue-300/30"
             }`}
             style={{
@@ -76,7 +76,7 @@ const HorizontalScroll = () => {
             <div className="flex items-center justify-center w-full md:w-1/2">
               <img
                 src={index === whyus.length - 1 ? assets.door : assets.wind}
-                className="w-full md:w-8/12 h-auto object-contain"
+                className="w-full h-1/2 md:w-8/12 h-auto object-cover"
                 alt={item.title}
                 loading="lazy" // Lazy-load images
               />
