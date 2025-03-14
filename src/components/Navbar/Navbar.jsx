@@ -10,7 +10,7 @@ import Button from "../ui-components/Buttonb";
 
 export default function Navbar() {
   // PDF handling
-  const pdfUrl = assets.Pdf;
+  const pdfUrl = assets.pdfUrl;
 
   // form initial
   const [result, setResult] = useState("");

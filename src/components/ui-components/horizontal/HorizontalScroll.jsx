@@ -1,17 +1,19 @@
 import React, { useEffect, useRef } from "react";
 import gsap from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
-import { assets, whyus } from "../../../assets/asset";
+import { whyus } from "../../../assets/asset";
+import Card from "../../ui-components/whyCard";
 gsap.registerPlugin(ScrollTrigger);
-const HorizontalScroll = () => {
+
+const HorizontalScroll = (props) => {
   const sectionRef = useRef(null);
   const triggerRef = useRef(null);
+  const cardRefs = useRef([]);
+
   useEffect(() => {
-    const sections = gsap.utils.toArray(".card");
+    const sections = gsap.utils.toArray(".card-row");
     ScrollTrigger.getAll().forEach((st) => st.kill());
-    // Calculate total width based on actual content
-    // Adjust total width calculation
-    const totalWidth = (sections.length - 1) * window.innerWidth;
+    const totalWidth = Math.ceil(sections.length / 2) * window.innerWidth;
 
     const tl = gsap.to(sections, {
       x: () => -totalWidth,
@@ -24,27 +26,36 @@ const HorizontalScroll = () => {
         end: () => `+=${totalWidth}`,
         fastScrollEnd: true,
         anticipatePin: 1,
-        onUpdate: (self) => {
-          // Prevent overscrolling
-          if (self.progress >= 1) {
-            self.scroll(self.start + self.duration);
-          }
-        }
       },
     });
 
-    // Debounced resize handler
+    // Setup entrance animations for cards
+    cardRefs.current.forEach((card) => {
+      if (card) {
+        gsap.from(card, {
+          opacity: 0,
+          y: 100,
+          scale: 0.8,
+          duration: 0.8,
+          ease: "power3.out",
+          scrollTrigger: {
+            trigger: card,
+            start: "top center+=100",
+            toggleActions: "play none none reverse"
+          }
+        });
+      }
+    });
+
     let resizeTimeout;
     const handleResize = () => {
       clearTimeout(resizeTimeout);
       resizeTimeout = setTimeout(() => {
         ScrollTrigger.refresh();
-      }, 100); // Debounce to reduce reflows
+      }, 100);
     };
 
     window.addEventListener("resize", handleResize);
-
-    // Cleanup
     return () => {
       tl.kill();
       ScrollTrigger.getAll().forEach((st) => st.kill());
@@ -53,38 +64,38 @@ const HorizontalScroll = () => {
     };
   }, []);
 
+  // Create pairs of cards
+  const cardPairs = [];
+  for (let i = 0; i < whyus.length; i += 2) {
+    cardPairs.push(whyus.slice(i, i + 2));
+  }
+
   return (
-    <div ref={triggerRef} className="w-screen h-screen overflow-hidden relative">
+    <div ref={triggerRef} className="w-screen h-screen overflow-hidden relative bg-transparent">
       <div 
         ref={sectionRef} 
         className="flex h-screen" 
-        style={{ width: `${(whyus.length) * 100}vw` }}
+        style={{ width: `${Math.ceil(whyus.length / 2) * 100}vw` }}
       >
-        {whyus.map((item, index) => (
-          <div
-            key={index}
-            className={`card w-screen h-auto mx-2 my-3 rounded-3xl flex flex-col md:flex-row gap-4 md:gap-4 items-center justify-center text-white text-4xl font-bold p-4 md:p-6 transition-colors duration-300 ${
-              index === whyus.length - 1
-                ? "bg-gradient-to-r from-red-600/30 to-orange-500/30 border border-red-300/30 "
-                : "bg-gradient-to-r from-blue-500/30 to-indigo-500/30 border border-blue-300/30"
-            }`}
-            style={{
-              boxShadow: "0 8px 32px 0 rgba(31, 38, 135, 0.2)",
-              willChange: "transform",
-            }}
-          >
-            <div className="flex items-center justify-center w-full md:w-1/2">
-              <img
-                src={index === whyus.length - 1 ? assets.door : assets.wind}
-                className="w-full h-1/2 md:w-8/12 h-auto object-cover"
-                alt={item.title}
-                loading="lazy" // Lazy-load images
-              />
-            </div>
-            <div className="flex flex-col items-center md:items-start text-center md:text-start justify-center gap-2 w-full md:w-1/2 px-4">
-              <p className="text-2xl md:text-4xl font-normal">{item.title}</p>
-              <p className="text-sm md:text-xl font-thin">{item.description}</p>
-            </div>
+        {cardPairs.map((pair, rowIndex) => (
+          <div key={rowIndex} className="card-row w-screen flex flex-col md:flex-row gap-4 justify-center items-stretch p-4">
+            {pair.map((item, index) => (
+              <div
+                key={rowIndex * 2 + index}
+                ref={el => cardRefs.current[rowIndex * 3 + index] = el}
+                className={`card w-full md:w-1/2 h-auto rounded-3xl hover:scale-105 flex flex-col items-center justify-center text-white text-4xl font-bold p-4 transition-all duration-500`}
+                style={{
+                  willChange: "transform",
+                }}
+              >
+                <div className="flex flex-col px-2 h-full items-center text-center justify-center gap-2 w-full">
+                  <Card 
+                    title={item.title} 
+                    para={item.description}
+                  />
+                </div>
+              </div>
+            ))}
           </div>
         ))}
       </div>
@@ -93,4 +104,3 @@ const HorizontalScroll = () => {
 };
 
 export default HorizontalScroll;
-

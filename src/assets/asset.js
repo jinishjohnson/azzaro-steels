@@ -7,7 +7,8 @@ import door from "./door.png"
 import dw from "./doorswind.png"
 import doorbg from "./door-banner.png"
 import sky from "./sky.png"
-
+import protection from './sheildon.png'
+import pdfUrl from "./Azzaro_ Steels.pdf"
 
 
 export const assets ={
@@ -20,7 +21,9 @@ export const assets ={
     door,
     dw,
     doorbg,
-    sky
+    sky,
+    protection,
+    pdfUrl
 }
 
 export const banner = 
@@ -49,23 +52,35 @@ export const windows =
 
 export const whyus = [
     {
-        title: "Expertise",
-        description: "Our team of experts has a deep understanding of the steel industry and the latest technologies.",
-        },
+        title: "Termite Proof",
+        description: "Our steel products are completely immune to termites, ensuring long-lasting protection for your property.",
+    },
     {
-        title: "Expertise",
+        title: "Galvanised Iron",
+        description: "Premium galvanized iron construction provides superior durability and weather resistance.",
+    },
+    {
+        title: "Fire Resistant",
+        description: "Enhanced fire resistance properties help protect your property during emergencies.",
+    },
+    {
+        title: "Anti Corrosive",
         description: "Our team of experts has a deep understanding of the steel industry and the latest technologies.",
     },
     {
-        title: "Expertise",
+        title: "UV Protection",
         description: "Our team of experts has a deep understanding of the steel industry and the latest technologies.",
     },
     {
-        title: "Expertise",
+        title: "Easy to install",
         description: "Our team of experts has a deep understanding of the steel industry and the latest technologies.",
     },
     {
-        title: "Expertise",
+        title: "Noise Cancellation",
+        description: "Our team of experts has a deep understanding of the steel industry and the latest technologies.",
+    },
+    {
+        title: "Zero Maintanance",
         description: "Our team of experts has a deep understanding of the steel industry and the latest technologies.",
     },
     {
