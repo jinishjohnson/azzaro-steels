@@ -79,7 +79,7 @@ const Home = () => {
             <Doors />
             <Window />
             <Why />
-            <What/>
+            {/* <What/> */}
             <Test/>
             <Contactus/>
       
